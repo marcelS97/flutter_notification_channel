@@ -51,7 +51,8 @@ class FlutterNotificationChannel {
     int visibility = NotificationVisibility.VISIBILITY_PUBLIC,
     bool allowBubbles = true,
     bool enableVibration = true,
-    bool enableSound = true,
+    required bool enableSound,
+    required String sound,
     bool showBadge = true,
   }) async {
     assert(visibility >= NotificationVisibility.VISIBILITY_SECRET &&
@@ -65,6 +66,7 @@ class FlutterNotificationChannel {
       'enableVibration': enableVibration,
       'allowBubbles': allowBubbles,
       'enableSound': enableSound,
+      'sound': sound,
       'showBadge': showBadge,
     };
     String response = await _channel.invokeMethod(
