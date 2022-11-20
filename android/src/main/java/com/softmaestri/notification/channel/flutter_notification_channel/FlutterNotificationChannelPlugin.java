@@ -82,7 +82,12 @@ public class FlutterNotificationChannelPlugin implements FlutterPlugin, MethodCa
                     .setUsage(AudioAttributes.USAGE_NOTIFICATION)
                     .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
                     .build();
-            notificationChannel.setSound(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.getPackageName() + "/raw/"+sound), attributes);
+
+            if(sound == ""){
+              notificationChannel.setSound(Settings.System.DEFAULT_NOTIFICATION_URI, attributes);
+            } else {
+              notificationChannel.setSound(Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.getPackageName() + "/raw/" + sound), attributes);
+            }
           }
           NotificationManager notificationManager =
                   (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
