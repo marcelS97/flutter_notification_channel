@@ -90,7 +90,7 @@ public class FlutterNotificationChannelPlugin implements FlutterPlugin, MethodCa
               soundUrl = Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" + context.getPackageName() + "/raw/" + sound);
             }
 
-            print(soundUrl);
+            System.out.println(soundUrl.toString());
 
             notificationChannel.setSound(soundUrl, attributes);
 
